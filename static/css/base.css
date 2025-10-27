@@ -3,10 +3,10 @@ html {
 }
 
 body {
-    background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
+    background: url('/media/cars.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
-    color: #555;
+    color: #ffffff;
     font-family: 'Lato';
 }
 
@@ -54,6 +54,14 @@ body {
 
 .border-black {
     border: 1px solid black !important;
+}
+
+.bg-light-subtle {
+    background-color: #c9d0d8 !important;
+}
+
+.bg-black {
+    background-color: #000 !important;
 }
 
 /* -------------------------------- Media Queries */
