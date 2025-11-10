@@ -11,11 +11,10 @@ class brand(models.Model):
 class Product(models.Model):
     brand = models.ForeignKey(brand, null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
     title = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.CharField(max_length=50)
     year = models.PositiveIntegerField(blank=True, null=True)
-    make = models.CharField(max_length=100, blank=True, null=True)
     mileage = models.PositiveIntegerField(blank=True, null=True)
-    condition = models.CharField(max_length=50, blank=True, null=True, choices=[('New', 'New'), ('Used', 'Used')])
+    condition = models.CharField(max_length=50, blank=True, null=True, choices=[('New', 'New'), ('Used', 'Used')], default='Used')
     credit_available = models.BooleanField(default=False)
     image = models.ImageField(blank=True, null=True)
 

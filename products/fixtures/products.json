@@ -1,0 +1,352 @@
+[
+  {
+    "model": "products.product",
+    "pk": "10289127",
+    "fields": {
+      "brand": "Mercedes",
+      "title": "2006 Mercedes-Benz SL500",
+      "price": "₦30,149,000",
+      "year": 2006,
+      "mileage": 83500,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10296405",
+    "fields": {
+      "brand": "Honda",
+      "title": "2012 Honda CR-V AWD 5dr EX-L",
+      "price": "₦11,242,000",
+      "year": 2012,
+      "mileage": 220000,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10333018",
+    "fields": {
+      "brand": "BMW",
+      "title": "2014 BMW 335XI M- Sport",
+      "price": "₦20,440,000",
+      "year": 2014,
+      "mileage": 162000,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10339518",
+    "fields": {
+      "brand": "BMW",
+      "title": "2004 BMW 330Ci",
+      "price": "₦7,148,890",
+      "year": 2004,
+      "mileage": 148000,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10351808",
+    "fields": {
+      "brand": "Mercedes",
+      "title": "2012 Mercedes-Benz M-Class ML 350 BlueTEC 4MATIC",
+      "price": "₦13,286,000",
+      "year": 2012,
+      "mileage": 188300,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10359984",
+    "fields": {
+      "brand": "BMW",
+      "title": "2016 BMW X1 xDrive28i",
+      "price": "₦22,484,000",
+      "year": 2016,
+      "mileage": 98472,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10368719",
+    "fields": {
+      "brand": "Mercedes",
+      "title": "2010 Mercedes-Benz GLK-Class GLK 350 4MATIC",
+      "price": "₦10,218,978",
+      "year": 2010,
+      "mileage": 144452,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10372207",
+    "fields": {
+      "brand": "BMW",
+      "title": "2015 BMW 4 Series 435i xDrive",
+      "price": "₦30,608,900",
+      "year": 2015,
+      "mileage": 130134,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10378477",
+    "fields": {
+      "brand": "Toyota",
+      "title": "2022 Toyota Corolla LE CVT",
+      "price": "₦26,566,890",
+      "year": 2022,
+      "mileage": 33634,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10378666",
+    "fields": {
+      "brand": "Honda",
+      "title": "2020 Honda CR-V Sport AWD",
+      "price": "₦32,704,000",
+      "year": 2020,
+      "mileage": 29950,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10379282",
+    "fields": {
+      "brand": "Toyota",
+      "title": "2018 Toyota RAV4 AWD 4dr XLE",
+      "price": "₦25,539,780",
+      "year": 2018,
+      "mileage": 112832,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10379819",
+    "fields": {
+      "brand": "Honda",
+      "title": "2019 Honda Civic Sedan LX CVT",
+      "price": "₦22,381,800",
+      "year": 2019,
+      "mileage": 70415,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10381130",
+    "fields": {
+      "brand": "Mercedes",
+      "title": "2017 Mercedes-Benz C-Class 300 4MATIC Sedan",
+      "price": "₦26,566,890",
+      "year": 2017,
+      "mileage": 79753,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10382966",
+    "fields": {
+      "brand": "BMW",
+      "title": "2013 BMW 3 Series 328i xDrive Sedan",
+      "price": "₦15,328,978",
+      "year": 2013,
+      "mileage": 143000,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10387444",
+    "fields": {
+      "brand": "Toyota",
+      "title": "2022 Toyota RAV4 XLE AWD",
+      "price": "₦34,543,600",
+      "year": 2022,
+      "mileage": 69369,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10389542",
+    "fields": {
+      "brand": "Toyota",
+      "title": "2019 Toyota RAV4 AWD XLE Premium",
+      "price": "₦31,682,000",
+      "year": 2019,
+      "mileage": 35500,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10389680",
+    "fields": {
+      "brand": "Mercedes",
+      "title": "2011 Mercedes-Benz M-Class ML 350 4MATIC",
+      "price": "₦10,218,978",
+      "year": 2011,
+      "mileage": 195000,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10390002",
+    "fields": {
+      "brand": "Mercedes",
+      "title": "2016 Mercedes-Benz C-Class 4dr Sdn C 300 4MATIC",
+      "price": "₦25,550,000",
+      "year": 2016,
+      "mileage": 80787,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10391220",
+    "fields": {
+      "brand": "Toyota",
+      "title": "2019 Toyota C-HR XLE",
+      "price": "₦25,039,000",
+      "year": 2019,
+      "mileage": 98055,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10391404",
+    "fields": {
+      "brand": "Toyota",
+      "title": "2020 Toyota Corolla LE CVT (SE Upgrade)",
+      "price": "₦24,106,936",
+      "year": 2020,
+      "mileage": 43760,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10391629",
+    "fields": {
+      "brand": "Honda",
+      "title": "2013 Honda Civic Sedan 4dr Auto LX",
+      "price": "₦14,205,800",
+      "year": 2013,
+      "mileage": 64090,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10391670",
+    "fields": {
+      "brand": "BMW",
+      "title": "2017 BMW X3 xDrive28i",
+      "price": "₦20,439,978",
+      "year": 2017,
+      "mileage": 142291,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10393769",
+    "fields": {
+      "brand": "Toyota",
+      "title": "2020 Toyota Corolla LE CVT",
+      "price": "₦24,517,780",
+      "year": 2020,
+      "mileage": 66634,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10395885",
+    "fields": {
+      "brand": "Toyota",
+      "title": "2023 Toyota RAV4 Hybrid XLE AWD",
+      "price": "₦46,081,980",
+      "year": 2023,
+      "mileage": 29216,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "10396333",
+    "fields": {
+      "brand": "Mercedes",
+      "title": "2018 Mercedes-Benz C-Class 300 4MATIC Sedan",
+      "price": "₦31,671,780",
+      "year": 2018,
+      "mileage": 75358,
+      "condition": "Used",
+      "credit_available": false,
+      "image": null
+    }
+  }
+]
