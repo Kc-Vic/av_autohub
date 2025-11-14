@@ -1,15 +1,30 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product
+from .models import Product, brand
 
 # Create your views here.
 def all_products(request):
     
     products = Product.objects.all()
     query = None
-
-    if request.GET:
+    brands = None
+    condition = None
+    credit_available = None
+    if request.GET:    
+        if 'brand' in request.GET:
+            brands = request.GET['brand'].split(',')
+            products = products.filter(brand__brand__in=brands)
+            brands = brand.objects.filter(brand__in=brands)
+        if 'condition' in request.GET:
+            condition = request.GET['condition']
+            products = products.filter(condition__iexact=condition)
+        if 'credit_available' in request.GET:
+            credit_available = request.GET['credit_available']
+            if credit_available == 'True':
+                products = products.filter(credit_available=True)
+            elif credit_available == 'False':
+                products = products.filter(credit_available=False)
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -23,6 +38,9 @@ def all_products(request):
     context = {
         'products': products,
         'search_term': query, 
+        'current_brands': brands,
+        'current_condition': condition,
+        'current_credit_available': credit_available,
     }
     
     return render(request, 'products/products.html', context)

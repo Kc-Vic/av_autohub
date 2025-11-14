@@ -2,14 +2,14 @@
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Cars
+                Car Brands
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item ">By Brand</a>
-                <a href="" class="dropdown-item ">By Year</a>
-                <a href="" class="dropdown-item ">By Condition</a>
-                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
+                <a href="{% url 'products' %}?brand=BMW" class="dropdown-item">BMW</a>
+                <a href="{% url 'products' %}?brand=Honda" class="dropdown-item ">Honda</a>
+                <a href="{% url 'products' %}?brand=Mercedes" class="dropdown-item ">Mercedes</a>
+                <a href="{% url 'products' %}?brand=Toyota" class="dropdown-item ">Toyota</a>
+                <a href="{% url 'products' %}?brand=BMW,Honda,Mercedes,Toyota" class="dropdown-item">All Brands</a>
             </div>
         </li>
 
@@ -30,10 +30,9 @@
                 Special Offers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">New Arrivals</a>
-                <a href="" class="dropdown-item">Used Car Deals</a>
-                <a href="" class="dropdown-item">Credit Options</a>
-                <a href="" class="dropdown-item">All Specials</a>
+                <a href="{% url 'products' %}?condition=New" class="dropdown-item">New Arrivals</a>
+                <a href="{% url 'products' %}?Condition=Used" class="dropdown-item">Used Car Deals</a>
+                <a href="{% url 'products' %}?credit_available=True" class="dropdown-item">Credit Options</a>
             </div>
         </li>
     </ul>
