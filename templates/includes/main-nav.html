@@ -17,11 +17,12 @@
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="clothing-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Car Accessories
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="" class="dropdown-item">Interior Car Parts</a>
-                <a href="" class="dropdown-item">Exterior Car Parts</a>
-                <a href="" class="dropdown-item">Engine Parts</a>
-                <a href="" class="dropdown-item">All Accessories</a>
+            <div class="dropdown-menu border-0" aria-labelledby="accessories-link">
+                <a href="{% url 'products' %}?accessory_type=Interior" class="dropdown-item">Interior Car Parts</a>
+                <a href="{% url 'products' %}?accessory_type=Exterior" class="dropdown-item">Exterior Car Parts</a>
+                <a href="{% url 'products' %}?accessory_type=Engine" class="dropdown-item">Engine Parts</a>
+                <a href="{% url 'products' %}?accessory_type=Others" class="dropdown-item">Others</a>
+                <a href="{% url 'products' %}?accessory_type=Interior,Exterior,Engine,Others" class="dropdown-item">All Accessories</a>
             </div>
         </li>
 

@@ -11,13 +11,15 @@ class brand(models.Model):
 class Product(models.Model):
     brand = models.ForeignKey(brand, null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
     title = models.CharField(max_length=200)
-    price = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=20, decimal_places=0)
     year = models.PositiveIntegerField(blank=True, null=True)
     mileage = models.PositiveIntegerField(blank=True, null=True)
     condition = models.CharField(max_length=50, blank=True, null=True, choices=[('New', 'New'), ('Used', 'Used')], default='Used')
     credit_available = models.BooleanField(default=False)
     image = models.ImageField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+    category = models.CharField(max_length=100, blank=True, null=True, choices=[('Cars', 'Cars'), ('Accessories', 'Accessories')], default='Cars')
+    accessory_type = models.CharField(max_length=100, blank=True, null=True, choices=[('Internal', 'Internal'), ('External', 'External'), ('Engine', 'Engine'), ('Others', 'Others')], default='Others')
 
     def __str__(self):
         return self.title

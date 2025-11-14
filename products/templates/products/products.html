@@ -40,10 +40,12 @@
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            {% if product.condition == 'New' %}
-                                                <span class="badge badge-success mb-2">New</span>
-                                            {% else %}
-                                                <p class="mb-2 text-left">{{ product.condition }} | {{ product.mileage }} miles</p>
+                                            {% if product.category == 'Cars' %}
+                                                {% if product.condition == 'New' %}
+                                                    <span class="badge badge-success mb-2">New</span>
+                                                {% else %}
+                                                    <p class="mb-2 text-left">{{ product.condition }} | {{ product.mileage }} miles</p>
+                                                {% endif %}
                                             {% endif %}
                                             <h5 class="mb-0 text-left">₦{{ product.price }}</h5>
                                             {% if product.credit_available == True %}

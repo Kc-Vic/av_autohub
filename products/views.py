@@ -11,7 +11,12 @@ def all_products(request):
     brands = None
     condition = None
     credit_available = None
-    if request.GET:    
+    accessories_type = None
+    if request.GET:
+        if 'accessory_type' in request.GET:
+            accessories_type = request.GET['accessory_type'].split(',')
+            products = products.filter(accessory_type__in=accessories_type)
+            accessories_type = accessories_type    
         if 'brand' in request.GET:
             brands = request.GET['brand'].split(',')
             products = products.filter(brand__brand__in=brands)
@@ -41,6 +46,7 @@ def all_products(request):
         'current_brands': brands,
         'current_condition': condition,
         'current_credit_available': credit_available,
+        'current_accessories_type': accessories_type,
     }
     
     return render(request, 'products/products.html', context)
