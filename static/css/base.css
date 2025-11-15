@@ -90,6 +90,10 @@ a.category-badge > span.badge:hover {
     cursor: pointer;
 }
 
+.mb-0 {
+    color: #1a1818 !important;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
