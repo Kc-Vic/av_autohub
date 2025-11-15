@@ -1,23 +1,62 @@
 {% extends "base.html" %}
-
 {% load static %}
-
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
+{% load humanize %} {% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <h2 class="logo-font">Credit Options</h2>
+            <hr class="w-50 mb-1">
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container content-container h-100">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <h1>Credit Options</h1>
-                <p>Please fill out the form below to apply for credit.</p>
-                <!-- Credit application form goes here -->
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center">
+
+            <h3 class="mt-4">{{ product.title }}</h3>
+            <p class="lead text-muted">
+                <a href="{% url 'product_detail' product.id %}" class="text-decoration-none text-black">
+                    <i class="fas fa-arrow-left fa-sm"></i> Back to Vehicle Details
+                </a>
+            </p>
+            <h4 class="logo-font">Total Price: ₦{{ product.price|intcomma }}</h4>
+            <hr>
+            
+            <div class="my-4 p-4 bg-light rounded">
+                <h4>Required Down Payment (50%)</h4>
+                <h2 class="font-weight-bold logo-font text-success">₦{{ down_payment|intcomma }}</h2>
+                <p class="text-muted">The remaining 50% will be split into monthly payments.</p>
             </div>
-        </div>           
+
+            <h3 class="logo-font">Your Payment Plan Options</h3>
+            <p class="text-muted">Choose the plan that works for you.</p>
+
+            <div class="row mt-4 mb-5">
+                
+                {% for option in options %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header bg-black text-white">
+                            <h5 class="logo-font mb-0">{{ option.duration }} Month Plan</h5>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="logo-font font-weight-bold">
+                                ₦{{ option.payment|floatformat:2|intcomma }}
+                            </h3>
+                            <p class="text-muted">per month</p>
+                            <a href="#" class="btn btn-black rounded-0 text-uppercase">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
     </div>
+</div>
 {% endblock %}

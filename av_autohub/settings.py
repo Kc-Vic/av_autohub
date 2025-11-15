@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',   
     'django.contrib.sites',  # required by allauth
+    'django.contrib.humanize',  # for humanizing data display
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
