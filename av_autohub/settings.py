@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',  # for better form rendering
     'home',
     'products',
     'credit',
@@ -60,6 +61,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'av_autohub.urls'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap5'  # using bootstrap4 for crispy forms
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -74,6 +77,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
+            ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
             ],
         },
     },
