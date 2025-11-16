@@ -44,12 +44,18 @@
                     {% else %}
                         <small class="text-muted">Credit Unavailable</small>
                     {% endif %}
-                    <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
-                    <span class="text-uppercase">Secure Checkout</span>
-                    <span class="icon">
-                        <i class="fas fa-lock"></i>
-                    </span>
                 </div>
+                <div class="buy-now-container my-5">
+                    <form method="GET" action="{% url 'checkout' product.id %}">
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary w-100 rounded-0 py-3 fw-bold">
+                                    <i class="fas fa-shopping-cart mr-2"></i> Proceed to Checkout 
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>    
             </div>
         </div>
     </div>

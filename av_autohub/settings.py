@@ -61,7 +61,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'av_autohub.urls'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap5'  # using bootstrap4 for crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # using bootstrap4 for crispy forms
 
 TEMPLATES = [
     {
