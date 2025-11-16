@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+<div class="container text-center my-5">
+    <h2 class="logo-font">Thank You!</h2>
+    <p>Your payment was successful and your order has been placed.</p>
+    <p>Your Order Number: <strong>{{ order.order_number }}</strong></p>
+    <a href="{% url 'products' %}" class="btn btn-black rounded-0">Continue Shopping</a>
+</div>
+{% endblock %}

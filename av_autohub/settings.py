@@ -169,3 +169,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# PAYSTACK SETTINGS
+PAYSTACK_PUBLIC_KEY = 'pk_test_bde3aea494100d387a6b5e558ca3bc84a509583e'
+PAYSTACK_SECRET_KEY = 'sk_test_d048c4085b72f2502755c1daca13e22b29acba02'
