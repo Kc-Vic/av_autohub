@@ -1,352 +1,375 @@
 [
-  {
-    "model": "products.product",
-    "pk": "10289127",
-    "fields": {
-      "brand": "Mercedes",
-      "title": "2006 Mercedes-Benz SL500",
-      "price": "₦30,149,000",
-      "year": 2006,
-      "mileage": 83500,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
+    {
+        "model": "products.brand",
+        "pk": 1,
+        "fields": {
+            "brand": "BMW"
+        }
+    },
+    {
+        "model": "products.brand",
+        "pk": 2,
+        "fields": {
+            "brand": "Mercedes"
+        }
+    },
+    {
+        "model": "products.brand",
+        "pk": 3,
+        "fields": {
+            "brand": "Toyota"
+        }
+    },
+    {
+        "model": "products.brand",
+        "pk": 4,
+        "fields": {
+            "brand": "Honda"
+        }
+    },
+    
+    
+    
+    
+    
+    {
+        "model": "products.product",
+        "pk": 1,
+        "fields": {
+            "brand": 1,
+            "title": "BMW M4 Competition Coupe",
+            "price": "89500000",
+            "year": 2023,
+            "mileage": 4500,
+            "condition": "Used",
+            "credit_available": true,
+            "image": "",
+            "description": "Stunning, low-mileage M4 Competition. Finished in Brooklyn Grey with carbon fiber package. Still under factory warranty. A true driver's car.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 2,
+        "fields": {
+            "brand": 1,
+            "title": "BMW X5 40i xDrive",
+            "price": "6200000000",
+            "year": 2022,
+            "mileage": 18000,
+            "condition": "Used",
+            "credit_available": true,
+            "image": "",
+            "description": "Executive package SUV, meticulously maintained. Equipped with panoramic sunroof, head-up display, and premium sound system. Perfect family vehicle.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 3,
+        "fields": {
+            "brand": 1,
+            "title": "BMW M Performance Floor Mats",
+            "price": "2500",
+            "year": null,
+            "mileage": null,
+            "condition": "New",
+            "credit_available": false,
+            "image": "",
+            "description": "Set of four all-weather floor mats with M Performance branding. Designed for 2019-2024 3 Series models.",
+            "category": "Accessories",
+            "accessory_type": "Internal"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 4,
+        "fields": {
+            "brand": 2,
+            "title": "Mercedes-Benz C300 Sedan",
+            "price": "38500000",
+            "year": 2019,
+            "mileage": 45000,
+            "condition": "Used",
+            "credit_available": true,
+            "image": "",
+            "description": "Elegant C-Class with AMG styling package. Features heated seats, navigation, and blind-spot assist. Recently serviced and ready for the road.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 5,
+        "fields": {
+            "brand": 2,
+            "title": "Mercedes-Benz G 63 AMG",
+            "price": "19500000",
+            "year": 2024,
+            "mileage": 0,
+            "condition": "New",
+            "credit_available": false,
+            "image": "",
+            "description": "Brand new, zero-mileage G-Wagon. Handcrafted V8 engine, exclusive leather interior, and all available driver assistance systems. Immediate availability.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 6,
+        "fields": {
+            "brand": 2,
+            "title": "Genuine Mercedes-Benz Oil Filter Kit",
+            "price": "9500",
+            "year": null,
+            "mileage": null,
+            "condition": "New",
+            "credit_available": false,
+            "image": "",
+            "description": "OEM oil filter and gasket kit compatible with most M274 4-cylinder Mercedes engines.",
+            "category": "Accessories",
+            "accessory_type": "Engine"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 7,
+        "fields": {
+            "brand": 3,
+            "title": "Toyota RAV4 XLE",
+            "price": "298000000",
+            "year": 2021,
+            "mileage": 25000,
+            "condition": "Used",
+            "credit_available": true,
+            "image": "",
+            "description": "Reliable and efficient SUV. All-wheel drive, excellent fuel economy, and Toyota Safety Sense 2.0. Perfect condition, single owner.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 8,
+        "fields": {
+            "brand": 3,
+            "title": "Toyota Corolla LE",
+            "price": "16500",
+            "year": 2018,
+            "mileage": 78000000,
+            "condition": "Used",
+            "credit_available": true,
+            "image": "",
+            "description": "Highly dependable commuter car. Well-maintained service records. A practical and affordable vehicle known for its longevity.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 9,
+        "fields": {
+            "brand": 3,
+            "title": "Toyota Land Cruiser 300 Series",
+            "price": "980000000",
+            "year": 2024,
+            "mileage": 100,
+            "condition": "New",
+            "credit_available": true,
+            "image": "",
+            "description": "The legendary off-roader, completely redesigned. Full luxury and capability package. Very limited stock available.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 10,
+        "fields": {
+            "brand": 3,
+            "title": "Toyota Roof Rack Cross Bars",
+            "price": "35000",
+            "year": null,
+            "mileage": null,
+            "condition": "New",
+            "credit_available": false,
+            "image": "",
+            "description": "Locking cross bars designed to fit the factory rails on 2019-2023 RAV4 models. Ideal for cargo carriers or bike mounts.",
+            "category": "Accessories",
+            "accessory_type": "External"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 11,
+        "fields": {
+            "brand": 4,
+            "title": "Honda Civic EX Sedan",
+            "price": "22900",
+            "year": 2020,
+            "mileage": 3050000000,
+            "condition": "Used",
+            "credit_available": true,
+            "image": "",
+            "description": "Clean, reliable Civic with the fuel-efficient 1.5L turbo engine. Includes Honda Sensing safety features and a spacious cabin.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 12,
+        "fields": {
+            "brand": 4,
+            "title": "Honda CR-V AWD Touring",
+            "price": "360000000000",
+            "year": 2023,
+            "mileage": 9800,
+            "condition": "Used",
+            "credit_available": true,
+            "image": "",
+            "description": "Top-tier CR-V trim with leather, navigation, and all-wheel drive. Practically new and priced to sell quickly.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 13,
+        "fields": {
+            "brand": 4,
+            "title": "Honda Accord Hybrid Sport",
+            "price": "31500000000",
+            "year": 2022,
+            "mileage": 15000,
+            "condition": "Used",
+            "credit_available": true,
+            "image": "",
+            "description": "Fuel-sipping hybrid sedan offering a blend of performance and incredible gas mileage. Sport styling package included.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 14,
+        "fields": {
+            "brand": 4,
+            "title": "Honda Genuine Spark Plugs",
+            "price": "7500",
+            "year": null,
+            "mileage": null,
+            "condition": "New",
+            "credit_available": false,
+            "image": "",
+            "description": "Set of four OEM iridium spark plugs, factory specification for most 4-cylinder Honda engines (2015+).",
+            "category": "Accessories",
+            "accessory_type": "Engine"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 15,
+        "fields": {
+            "brand": 1,
+            "title": "BMW iX xDrive50",
+            "price": "9500000000000",
+            "year": 2024,
+            "mileage": 0,
+            "condition": "New",
+            "credit_available": true,
+            "image": "",
+            "description": "Brand new electric SUV with massive range and luxurious interior. Cutting-edge technology and immediate torque. Fully electric.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 20,
+        "fields": {
+            "brand": 2,
+            "title": "Mercedes-Benz EQS 580 Sedan",
+            "price": "11500000000",
+            "year": 2023,
+            "mileage": 7000,
+            "condition": "Used",
+            "credit_available": true,
+            "image": "",
+            "description": "Flagship electric luxury sedan. Features the impressive Hyperscreen dashboard and exceptional ride comfort. Low miles.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 16,
+        "fields": {
+            "brand": 2,
+            "title": "AMG Aero Wheel Set (19-inch)",
+            "price": "35000",
+            "year": null,
+            "mileage": null,
+            "condition": "New",
+            "credit_available": false,
+            "image": "",
+            "description": "Full set of four 19-inch AMG style alloy wheels. Improves aesthetics and handling. Fits most C-Class and E-Class models.",
+            "category": "Accessories",
+            "accessory_type": "External"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 17,
+        "fields": {
+            "brand": 3,
+            "title": "Toyota Camry SE",
+            "price": "27000000000",
+            "year": 2023,
+            "mileage": 12000,
+            "condition": "Used",
+            "credit_available": true,
+            "image": "",
+            "description": "Sporty and reliable sedan. Recent model year with minimal wear. Excellent choice for daily commuting and long trips.",
+            "category": "Cars",
+            "accessory_type": null
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 18,
+        "fields": {
+            "brand": 3,
+            "title": "Toyota Microfiber Interior Cleaning Kit",
+            "price": "6500",
+            "year": null,
+            "mileage": null,
+            "condition": "New",
+            "credit_available": false,
+            "image": "",
+            "description": "Official Toyota interior cleaning kit, including microfiber cloths, dashboard cleaner, and leather conditioner.",
+            "category": "Accessories",
+            "accessory_type": "Internal"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 19,
+        "fields": {
+            "brand": 4,
+            "title": "Honda Pilot Elite",
+            "price": "4100000000",
+            "year": 2021,
+            "mileage": 35000,
+            "condition": "Used",
+            "credit_available": true,
+            "image": "",
+            "description": "Three-row SUV perfect for a large family. Features heated/ventilated seats, rear entertainment system, and all-wheel drive.",
+            "category": "Cars",
+            "accessory_type": null
+        }
     }
-  },
-  {
-    "model": "products.product",
-    "pk": "10296405",
-    "fields": {
-      "brand": "Honda",
-      "title": "2012 Honda CR-V AWD 5dr EX-L",
-      "price": "₦11,242,000",
-      "year": 2012,
-      "mileage": 220000,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10333018",
-    "fields": {
-      "brand": "BMW",
-      "title": "2014 BMW 335XI M- Sport",
-      "price": "₦20,440,000",
-      "year": 2014,
-      "mileage": 162000,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10339518",
-    "fields": {
-      "brand": "BMW",
-      "title": "2004 BMW 330Ci",
-      "price": "₦7,148,890",
-      "year": 2004,
-      "mileage": 148000,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10351808",
-    "fields": {
-      "brand": "Mercedes",
-      "title": "2012 Mercedes-Benz M-Class ML 350 BlueTEC 4MATIC",
-      "price": "₦13,286,000",
-      "year": 2012,
-      "mileage": 188300,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10359984",
-    "fields": {
-      "brand": "BMW",
-      "title": "2016 BMW X1 xDrive28i",
-      "price": "₦22,484,000",
-      "year": 2016,
-      "mileage": 98472,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10368719",
-    "fields": {
-      "brand": "Mercedes",
-      "title": "2010 Mercedes-Benz GLK-Class GLK 350 4MATIC",
-      "price": "₦10,218,978",
-      "year": 2010,
-      "mileage": 144452,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10372207",
-    "fields": {
-      "brand": "BMW",
-      "title": "2015 BMW 4 Series 435i xDrive",
-      "price": "₦30,608,900",
-      "year": 2015,
-      "mileage": 130134,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10378477",
-    "fields": {
-      "brand": "Toyota",
-      "title": "2022 Toyota Corolla LE CVT",
-      "price": "₦26,566,890",
-      "year": 2022,
-      "mileage": 33634,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10378666",
-    "fields": {
-      "brand": "Honda",
-      "title": "2020 Honda CR-V Sport AWD",
-      "price": "₦32,704,000",
-      "year": 2020,
-      "mileage": 29950,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10379282",
-    "fields": {
-      "brand": "Toyota",
-      "title": "2018 Toyota RAV4 AWD 4dr XLE",
-      "price": "₦25,539,780",
-      "year": 2018,
-      "mileage": 112832,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10379819",
-    "fields": {
-      "brand": "Honda",
-      "title": "2019 Honda Civic Sedan LX CVT",
-      "price": "₦22,381,800",
-      "year": 2019,
-      "mileage": 70415,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10381130",
-    "fields": {
-      "brand": "Mercedes",
-      "title": "2017 Mercedes-Benz C-Class 300 4MATIC Sedan",
-      "price": "₦26,566,890",
-      "year": 2017,
-      "mileage": 79753,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10382966",
-    "fields": {
-      "brand": "BMW",
-      "title": "2013 BMW 3 Series 328i xDrive Sedan",
-      "price": "₦15,328,978",
-      "year": 2013,
-      "mileage": 143000,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10387444",
-    "fields": {
-      "brand": "Toyota",
-      "title": "2022 Toyota RAV4 XLE AWD",
-      "price": "₦34,543,600",
-      "year": 2022,
-      "mileage": 69369,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10389542",
-    "fields": {
-      "brand": "Toyota",
-      "title": "2019 Toyota RAV4 AWD XLE Premium",
-      "price": "₦31,682,000",
-      "year": 2019,
-      "mileage": 35500,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10389680",
-    "fields": {
-      "brand": "Mercedes",
-      "title": "2011 Mercedes-Benz M-Class ML 350 4MATIC",
-      "price": "₦10,218,978",
-      "year": 2011,
-      "mileage": 195000,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10390002",
-    "fields": {
-      "brand": "Mercedes",
-      "title": "2016 Mercedes-Benz C-Class 4dr Sdn C 300 4MATIC",
-      "price": "₦25,550,000",
-      "year": 2016,
-      "mileage": 80787,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10391220",
-    "fields": {
-      "brand": "Toyota",
-      "title": "2019 Toyota C-HR XLE",
-      "price": "₦25,039,000",
-      "year": 2019,
-      "mileage": 98055,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10391404",
-    "fields": {
-      "brand": "Toyota",
-      "title": "2020 Toyota Corolla LE CVT (SE Upgrade)",
-      "price": "₦24,106,936",
-      "year": 2020,
-      "mileage": 43760,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10391629",
-    "fields": {
-      "brand": "Honda",
-      "title": "2013 Honda Civic Sedan 4dr Auto LX",
-      "price": "₦14,205,800",
-      "year": 2013,
-      "mileage": 64090,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10391670",
-    "fields": {
-      "brand": "BMW",
-      "title": "2017 BMW X3 xDrive28i",
-      "price": "₦20,439,978",
-      "year": 2017,
-      "mileage": 142291,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10393769",
-    "fields": {
-      "brand": "Toyota",
-      "title": "2020 Toyota Corolla LE CVT",
-      "price": "₦24,517,780",
-      "year": 2020,
-      "mileage": 66634,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10395885",
-    "fields": {
-      "brand": "Toyota",
-      "title": "2023 Toyota RAV4 Hybrid XLE AWD",
-      "price": "₦46,081,980",
-      "year": 2023,
-      "mileage": 29216,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  },
-  {
-    "model": "products.product",
-    "pk": "10396333",
-    "fields": {
-      "brand": "Mercedes",
-      "title": "2018 Mercedes-Benz C-Class 300 4MATIC Sedan",
-      "price": "₦31,671,780",
-      "year": 2018,
-      "mileage": 75358,
-      "condition": "Used",
-      "credit_available": false,
-      "image": null
-    }
-  }
 ]
