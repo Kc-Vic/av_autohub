@@ -11,8 +11,49 @@ def all_products(request):
     brands = None
     condition = None
     credit_available = None
-    accessory_types = []
+    accessory_types = [],
+    current_category = None,
+    sort = None
+    direction = None
+    
     if request.GET:
+    
+    # --- DYNAMIC SORTING LOGIC ---
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            
+            # Determine direction
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                desc_prefix = '-' if direction == 'desc' else ''
+            else:
+                desc_prefix = '-'
+            current_category = request.GET.get('category')
+            
+            final_sort_key = None
+            
+            if current_category == 'Cars' or (current_category is None and products.filter(category='Cars').exists()):
+                if sortkey == 'year':
+                    # Order by Year (desc) then Price (desc)
+                    final_sort_key = (f'{desc_prefix}year', f'{desc_prefix}price') 
+                elif sortkey == 'price':
+                    # Order by Price (desc/asc) then Year (as a secondary tie-breaker)
+                    final_sort_key = (f'{desc_prefix}price', f'{desc_prefix}year') 
+
+            elif current_category == 'Accessories' or current_category == 'Offers':
+                # Accessories and Offers only sort by price.
+                if sortkey == 'price':
+                    final_sort_key = [f'{desc_prefix}price'] 
+                    
+            # Apply the final sort key
+            if final_sort_key:
+                products = products.order_by(*final_sort_key)
+            
+    # --- FILTERING LOGIC ---
+        if 'category' in request.GET:
+            category = request.GET['category']
+            products = products.filter(category__iexact=category)
         if 'accessory_type' in request.GET:
             accessory_types = request.GET['accessory_type'].split(',')
             products = products.filter(accessory_type__in=accessory_types)
@@ -39,6 +80,7 @@ def all_products(request):
             queries = Q(title__icontains=query) | Q(description__icontains=query) | Q(year__icontains=query) |  Q(condition__icontains=query) 
             products = products.filter(queries)
     
+    current_sorting = f'{sort}_{direction}'
     
     context = {
         'products': products,
@@ -47,6 +89,8 @@ def all_products(request):
         'current_condition': condition,
         'current_credit_available': credit_available,
         'current_accessories_types': accessory_types,
+        'current_category': current_category,
+        'current_sorting': current_sorting,
     }
     
     return render(request, 'products/products.html', context)

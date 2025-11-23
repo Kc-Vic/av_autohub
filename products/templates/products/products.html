@@ -56,7 +56,11 @@
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
-                                    <p class="mb-0">{{ product.title }}</p>
+                                    {% if product.category == 'Cars' %}
+                                        <p class="mb-0">{{product.year}} {{ product.title }}</p>
+                                    {% else %}
+                                        <p class="mb-0">{{ product.title }}</p>
+                                    {% endif %}
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">

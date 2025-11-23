@@ -6,6 +6,8 @@ from django.urls import reverse
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
+from decimal import Decimal
+from decimal import ROUND_HALF_UP
 
 """
 The `checkout_view` function handles the checkout process for a product, including form validation,
@@ -123,6 +125,8 @@ def verify_payment(request):
         product_id = pending_order_data.get('product_id')
         form_data = pending_order_data.get('form_data')
         product = get_object_or_404(Product, pk=product_id)
+        paystack_amount_kobo = response['data']['amount']
+        verified_total = Decimal(paystack_amount_kobo) / Decimal(100).quantize(Decimal('1'), rounding=ROUND_HALF_UP)
 
         # Create the Order in the database
         order = Order(
@@ -135,8 +139,8 @@ def verify_payment(request):
             state=form_data.get('state'),
             country=form_data.get('country'),
             postcode=form_data.get('postcode'),
-            order_total=product.price,
-            grand_total=product.price,
+            order_total=verified_total,
+            grand_total=verified_total,
         )
         order.save() # Save the order
 
@@ -145,6 +149,7 @@ def verify_payment(request):
             order=order,
             product=product,
             quantity=1,
+            lineitem_total=verified_total, 
         )
 
         # Clean up the session
