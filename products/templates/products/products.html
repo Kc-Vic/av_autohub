@@ -79,10 +79,10 @@
                                             {% else %}
                                                 <small class="text-muted">Credit Unavailable</small>
                                             {% endif %}
-                                            {% if request.user is_superuser %}
+                                            {% if request.user.is_superuser %}
                                                 <small class="ml-3 text-end">
                                                     <a href="{% url 'edit_product' product.id %}">Edit</a> | 
-                                                    <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                    <a class="text-danger" onclick="return confirm('Are you sure you want to delete {{ product.title }}?')" href="{% url 'delete_product' product.id %}">Delete</a>
                                                 </small>
                                             {% endif %}
                                         </div>
