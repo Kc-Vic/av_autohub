@@ -1,10 +1,4 @@
 import requests
-import hmac
-import hashlib
-import json
-import os
-from django.http import HttpResponse, JsonResponse
-from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -16,7 +10,6 @@ from decimal import Decimal
 from decimal import ROUND_HALF_UP
 from profiles.models import UserProfile
 from profiles.forms import userProfileForm
-from .utilis import send_confirmation_email
 
 """
 The `checkout_view` function handles the checkout process for a product, including form validation,
@@ -192,10 +185,6 @@ def verify_payment(request):
             quantity=1,
             lineitem_total=verified_total, 
         )
-        try:
-            send_confirmation_email(order)
-        except Exception as e:
-            print(f"Error sending email for order {order.order_number}: {e}")
 
         # Clean up the session
         del request.session['pending_order']
@@ -206,57 +195,3 @@ def verify_payment(request):
         # Payment failed
         messages.error(request, 'Payment failed. Please try again.')
         return render(request, 'checkout/payment_failed.html')
-    
-def process_successful_payment(reference):
-    """
-    Looks up the payment reference, finalizes the order in the DB, 
-    and returns the created Order object.
-    """
-    try:
-        order = Order.objects.get(paystack_reference=reference)
-        order.is_paid = True
-        order.save()
-        end_confirmation_email(order)
-        
-        return True
-    except Order.DoesNotExist:
-        print(f"Error: Order with reference {reference} not found.")
-        return False
-    except Exception as e:
-        print(f"Unexpected error processing payment for reference {reference}: {e}")
-        return False
-    
-@csrf_exempt
-def paystack_webhook(request):
-    
-    PAYSTACK_SECRET = os.environ.get('PAYSTACK_SECRET_KEY')
-    signature = request.headers.get('HTTP_X_PAYSTACK_SIGNATURE')
-    payload = request.body
-    
-    calculated_signature = hmac.new(
-        key=PAYSTACK_SECRET.encode('utf-8'),
-        msg=payload,
-        digestmod=hashlib.sha512
-    ).hexdigest()
-    
-    if calculated_signature != signature:
-        return HttpResponse(status=400, content='Invalid signature')
-    
-    try:
-        event = json.loads(payload)
-    except json.JSONDecodeError:
-        return HttpResponse(status=400, content='Invalid JSON')
-    
-    if event['event'] == 'charge.success':
-        reference = event['data']['reference']
-        
-        success = process_successful_payment(reference)
-        
-        if success:
-
-            return HttpResponse(status=200, content='Success')
-        else:
-
-            return HttpResponse(status=200, content='Processing failed internally')
-            
-    return HttpResponse(status=200, content='Event received')
