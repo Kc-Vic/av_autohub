@@ -4,6 +4,8 @@ from .models import UserProfile
 from .forms import userProfileForm
 
 from checkout.models import Order
+from credit.models import CreditApplication
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def profile(request):
@@ -39,4 +41,18 @@ def order_history(request, order_number):
         'from_profile': True,
     }
 
+    return render(request, template, context)
+
+@login_required
+def credit_history(request, application_id):
+    credit_applications = request.user.credit_applications.all().order_by('-created_at')
+    template = 'profiles/profile.html'
+    context = {
+        'form': form,
+        'orders': orders,
+        # Passing both history QuerySets to the template
+        'credit_applications': credit_applications,
+        'on_profile_page': True 
+    }
+    
     return render(request, template, context)

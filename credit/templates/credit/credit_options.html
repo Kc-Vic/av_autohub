@@ -1,62 +1,74 @@
 {% extends "base.html" %}
 {% load static %}
-{% load humanize %} {% block page_header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col text-center mt-3">
-            <h2 class="logo-font">Credit Options</h2>
-            <hr class="w-50 mb-1">
-        </div>
-    </div>
-</div>
+{% load humanize %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="overlay"></div>
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center">
-
-            <h3 class="mt-4">{{ product.title }}</h3>
-            <p class="lead text-muted">
-                <a href="{% url 'product_detail' product.id %}" class="text-decoration-none text-black">
-                    <i class="fas fa-arrow-left fa-sm"></i> Back to Vehicle Details
-                </a>
-            </p>
-            <h4 class="logo-font">Total Price: ₦{{ product.price|intcomma }}</h4>
-            <hr>
-            
-            <div class="my-4 p-4 bg-light rounded">
-                <h4>Required Down Payment (50%)</h4>
-                <h2 class="font-weight-bold logo-font text-success">₦{{ down_payment|intcomma }}</h2>
-                <p class="text-muted">The remaining 50% will be split into monthly payments.</p>
-            </div>
-
-            <h3 class="logo-font">Your Payment Plan Options</h3>
-            <p class="text-muted">Choose the plan that works for you.</p>
-
-            <div class="row mt-4 mb-5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+                <hr>
+                <h2 class="logo-font mb-4">Credit Options</h2>
+                <hr>
                 
-                {% for option in options %}
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-header bg-black text-white">
-                            <h5 class="logo-font mb-0">{{ option.duration }} Month Plan</h5>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="logo-font font-weight-bold">
-                                ₦{{ option.payment|floatformat:2|intcomma }}
-                            </h3>
-                            <p class="text-muted">per month</p>
-                            <a href="{% url 'credit_application' %}" class="btn btn-black rounded-0 text-uppercase">Apply Now</a>
-                        </div>
+                <p class="lead text-center">
+                    Financing Options for: <strong>{{ product.title }}</strong> (Total Price: ₦{{ product.price|intcomma }})
+                </p>
+
+                <div class="card my-4 border-info">
+                    <div class="card-header bg-info text-white text-center">
+                        <h5 class="mb-0">Summary & Initial Payment</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-1">Minimum Down Payment (50%):</p>
+                        <h4 class="text-info">₦{{ down_payment|intcomma }}</h4>
+                        <p class="small text-muted">The remaining balance will be financed.</p>
                     </div>
                 </div>
-                {% endfor %}
+
+                <h3 class="logo-font mt-5 mb-3 text-center">Monthly Payment Plans</h3>
+
+                <div class="row">
+                    {% for option in options %}
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="card text-center h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title text-black">
+                                    {{ option.duration }} Months
+                                </h5>
+                                <p class="card-text text-muted small">
+                                    Financing over:
+                                </p>
+                                <hr>
+                                <h3 class="text-success">
+                                    ₦{{ option.payment|floatformat:"0"|intcomma }}
+                                </h3>
+                                <p class="card-text small text-muted">
+                                    per month (Estimate)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="text-center mt-5">
+                    <p class="lead">Ready to proceed?</p>
+                    <!-- Link to the main application form -->
+                    <a href="{% url 'credit_application' %}" class="btn btn-black btn-lg rounded-0 text-uppercase">
+                        Start Full Application
+                    </a>
+                    
+                    <a href="{% url 'products' %}" class="btn btn-outline-black btn-lg rounded-0 text-uppercase ml-3">
+                        Continue Browsing
+                    </a>
+                </div>
 
             </div>
-
         </div>
     </div>
-</div>
 {% endblock %}

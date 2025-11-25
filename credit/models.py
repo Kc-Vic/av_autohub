@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import User
 from decimal import Decimal
@@ -21,8 +23,24 @@ class CreditApplication(models.Model):
     annual_income = models.DecimalField(max_digits=15, decimal_places=0) # Use 0 for whole Naira
 
     # Admin/Tracking fields
+    application_id = models.CharField(max_length=20, unique=True, editable=False)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Pending')
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    def _generate_application_id(self):
+        """
+        Generate a random, unique order number using UUID
+        """
+        return uuid.uuid4().hex.upper()
+    
+    def save(self, *args, **kwargs):
+
+        if not self.application_id:
+            self.application_id = self._generate_application_id()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.application_id
 
     def __str__(self):
         return f"Application for {self.full_name} ({self.status})"

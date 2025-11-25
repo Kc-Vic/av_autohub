@@ -41,7 +41,7 @@
                     <hr>
                     <p class="mt-3">{{ product.description }}</p>
                     {% if product.credit_available == True %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i><a href="{% url 'credit_options' product.id %}">Check Credit Options</a></small>
+                        <small class="text-muted"><i class="fas fa-star mr-1"></i><a href="{% url 'credit_options' product.pk %}">Check Credit Options</a></small>
                     {% else %}
                         <small class="text-muted">Credit Unavailable</small>
                     {% endif %}

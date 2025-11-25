@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block extra_css %}
+    <!-- Reusing checkout CSS for consistent confirmation styling -->
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <!-- Large, positive heading -->
+                <h2 class="logo-font mb-4 text-success">Application Approved!</h2>
+                <hr>
+                <p class="text-black">
+                    Congratulations, <strong>{{ application.full_name }}</strong>! Your credit application has been **APPROVED** immediately.
+                    An email with the full details of your loan terms and next steps will be sent shortly.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                <div class="order-confirmation-wrapper p-2 border border-success">
+                    <div class="row bg-success text-white p-2 mb-2">
+                        <div class="col">
+                            <small class="text-uppercase font-weight-bold">Application Details</small>
+                        </div>
+                    </div>
+
+                    <!-- Application ID -->
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <p class="mb-0 text-black font-weight-bold">Application ID</p>
+                        </div>
+                        <div class="col-12 col-md-7 text-md-right">
+                            <p class="mb-0">{{ application.application_id }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Date Submitted -->
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <p class="mb-0 text-black font-weight-bold">Submission Date</p>
+                        </div>
+                        <div class="col-12 col-md-7 text-md-right">
+                            <p class="mb-0">{{ application.created_at }}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Application Status -->
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <p class="mb-0 text-black font-weight-bold">Status</p>
+                        </div>
+                        <div class="col-12 col-md-7 text-md-right">
+                            <p class="mb-0 text-success font-weight-bold">{{ application.status|upper }}</p>
+                        </div>
+                    </div>
+
+                    <hr class="my-2">
+                    
+                    <!-- Applicant Info -->
+                    <div class="row">
+                        <div class="col">
+                            <small class="text-muted">Applicant Details:</small>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <p class="mb-0 text-black font-weight-bold">Annual Income</p>
+                        </div>
+                        <div class="col-12 col-md-7 text-md-right">
+                            <!-- Displaying income with currency format -->
+                            <p class="mb-0">₦{{ application.annual_income | intcomma}}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <p class="mb-0 text-black font-weight-bold">Job Title</p>
+                        </div>
+                        <div class="col-12 col-md-7 text-md-right">
+                            <p class="mb-0">{{ application.job_business_title }}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="row">
+            <div class="col-12 col-lg-7 text-right">
+                <a href="{% url 'profile' %}" class="btn btn-black rounded-0 my-2">
+                    <span class="icon mr-2">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <span class="text-uppercase">Go to My Profile</span>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

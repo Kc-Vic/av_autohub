@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from products.models import Product  # Import your Product model
 from decimal import Decimal
 from django.contrib import messages
@@ -95,3 +95,31 @@ def credit_application_view(request):
         'form': form,
     }
     return render(request, 'credit/application.html', context)
+
+@login_required
+def credit_application_detail_view(request, application_id):
+    """
+    Shows the status page for a single credit application.
+    The template rendered is dynamically chosen based on the application's status.
+    """
+    
+    # Securely retrieve the application, ensuring it belongs to the logged-in user
+    application = get_object_or_404(
+        CreditApplication, 
+        application_id=application_id,
+        user=request.user
+    )
+    
+    # Determine the template based on the status
+    if application.status == 'Approved':
+        template_name = 'credit/credit_approved.html'
+    elif application.status == 'Rejected':
+        template_name = 'credit/credit_denied.html'
+    else: # 'Pending' or any other status
+        template_name = 'credit/credit_pending.html'
+        
+    context = {
+        'application': application
+    }
+    
+    return render(request, template_name, context)
