@@ -8,6 +8,8 @@ from .models import Order, OrderLineItem
 from products.models import Product
 from decimal import Decimal
 from decimal import ROUND_HALF_UP
+from profiles.models import UserProfile
+from profiles.forms import userProfileForm
 
 """
 The `checkout_view` function handles the checkout process for a product, including form validation,
@@ -30,9 +32,12 @@ public key.
 def checkout_view(request, product_id):
     
     product = get_object_or_404(Product, pk=product_id)
+    safe_price = product.price.quantize(Decimal('1'), rounding=ROUND_HALF_UP)
 
     order_total = product.price
     grand_total = order_total
+    
+    order_form = None
     
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -40,16 +45,19 @@ def checkout_view(request, product_id):
         if form.is_valid():
             # Form is valid, but DON'T save to DB yet.
             # Save the form data and product_id to the session
+            save_info = 'save-info' in request.POST
+            
             request.session['pending_order'] = {
                 'form_data': request.POST,
                 'product_id': product_id,
+                'save_info': save_info, 
             }
 
             # Prepare data to send to Paystack
             url = "https://api.paystack.co/transaction/initialize"
             email = form.cleaned_data.get('email')
             # Convert price to Kobo (Paystack requires integer)
-            amount = int(product.price * 100) 
+            amount = int(safe_price * 100) 
             
             # The URL Paystack will redirect to after payment
             callback_url = request.build_absolute_uri(reverse('verify_payment'))
@@ -74,9 +82,11 @@ def checkout_view(request, product_id):
             else:
                 # API call failed
                 messages.error(request, 'Could not connect to payment service. Please try again.')
+                order_form = form
         else:
             # Form is invalid
             messages.error(request, 'Please correct the errors below.')
+            order_form = form
 
     else: # GET request
         order_form = OrderForm()
@@ -112,6 +122,8 @@ def verify_payment(request):
     # Make the request to Paystack
     r = requests.get(url, headers=headers)
     response = r.json()
+    
+    print(f"Paystack API Response: {response}")
 
     if response['status'] == True and response['data']['status'] == 'success':
         # Payment was successful
@@ -124,6 +136,7 @@ def verify_payment(request):
 
         product_id = pending_order_data.get('product_id')
         form_data = pending_order_data.get('form_data')
+        save_info = pending_order_data.get('save_info', False) 
         product = get_object_or_404(Product, pk=product_id)
         paystack_amount_kobo = response['data']['amount']
         verified_total = Decimal(paystack_amount_kobo) / Decimal(100).quantize(Decimal('1'), rounding=ROUND_HALF_UP)
@@ -142,7 +155,28 @@ def verify_payment(request):
             order_total=verified_total,
             grand_total=verified_total,
         )
-        order.save() # Save the order
+        
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                order.user_profile = profile
+        
+                if save_info:
+                    profile_data = {
+                        'default_phone_number': form_data.get('phone_number'),
+                        'default_street_address1': form_data.get('street_address1'),
+                        'default_street_address2': form_data.get('street_address2'),
+                        'default_town_or_city': form_data.get('town_or_city'),
+                        'default_state': form_data.get('state'),
+                        'default_country': form_data.get('country'),
+                        'default_postcode': form_data.get('postcode'),
+                    }
+                    user_profile_form = userProfileForm(profile_data, instance=profile)
+                    if user_profile_form.is_valid():
+                        user_profile_form.save()
+            except UserProfile.DoesNotExist:
+                pass
+        order.save()
 
         # Create the OrderLineItem
         OrderLineItem.objects.create(
@@ -154,6 +188,7 @@ def verify_payment(request):
 
         # Clean up the session
         del request.session['pending_order']
+        
 
         messages.success(request, f"Payment successful! Your order number is {order.order_number}.")
         return render(request, 'checkout/payment_success.html', {'order': order})

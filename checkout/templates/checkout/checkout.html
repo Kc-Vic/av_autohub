@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block extracss %}
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
@@ -45,7 +46,7 @@
                         <p class="my-0">Order Total:</p>
                     </div>
                     <div class="col-3">
-                        <p class="my-0"><strong>₦{{ grand_total | floatformat:2 }}</strong></p>
+                        <p class="my-0"><strong>₦{{ grand_total | floatformat:2 | intcomma }}</strong></p>
                     </div>
                 </div>
             </div>
@@ -97,7 +98,7 @@
 							<span class="icon">
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
-							<span>Your will be charged <strong>₦{{ grand_total|floatformat:2 }}</strong></span>
+							<span>Your will be charged <strong>₦{{ grand_total|floatformat:2 | intcomma }}</strong></span>
 						</p>
 					</div>
                 </form>

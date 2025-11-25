@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -29,7 +30,7 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
                     <p class="mb-0">{{ product.title }}</p>
-                    <p class="lead mb-0 text-left font-weight-bold">₦{{ product.price }}</p>
+                    <p class="lead mb-0 text-left font-weight-bold">₦{{ product.price | intcomma }}</p>
                     {% if product.category == 'Cars' %}
                         {% if product.condition == 'Used' %}
                             <small class="text-muted"><i class="fas fa-star mr-1"></i>Used | {{ product.mileage }} miles</small>

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -72,7 +73,7 @@
                                                     <p class="mb-2 text-left">{{ product.condition }} | {{ product.mileage }} miles</p>
                                                 {% endif %}
                                             {% endif %}
-                                            <h5 class="mb-0 text-left">₦{{ product.price  }}</h5>
+                                            <h5 class="mb-0 text-left">₦{{ product.price | intcomma }}</h5>
                                             {% if product.credit_available == True %}
                                                 <small class="text-muted"><i class="fas fa-star mr-1"></i>Credit Available</small>
                                             {% else %}
