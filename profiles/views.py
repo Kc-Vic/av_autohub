@@ -23,6 +23,7 @@ def profile(request):
     context = {
         'form': form,
         'orders': orders,
+        'credit_applications': request.user.credit_applications.all().order_by('-created_at'),
         'on_profile_page': True,
     }
     return render(request, 'profiles/profile.html', context)
