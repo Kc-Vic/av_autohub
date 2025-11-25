@@ -7,7 +7,7 @@ import json
 
 @require_POST
 @csrf_exempt
-def paypal_webhook(request):
+def webhook(request):
     """
     Listens for webhooks from PayPal and verifies their authenticity.
     """
