@@ -115,9 +115,9 @@ def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            product = form.save()
+            form.save()
             messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_detail', args=[product.id]))
+            return redirect(reverse('add_product'))
         else:
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
     else:
