@@ -8,6 +8,7 @@ from credit.models import CreditApplication
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     
