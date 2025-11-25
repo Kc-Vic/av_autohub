@@ -106,6 +106,10 @@ SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Needed to send emails in console and retrieve confirmation link
 
+# Required for the send_confirmation_email function:
+DEFAULT_FROM_EMAIL = 'noreply@yourdomain.com'
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
 # Account Settings
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True

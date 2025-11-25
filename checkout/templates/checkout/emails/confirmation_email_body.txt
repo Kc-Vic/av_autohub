@@ -1,0 +1,12 @@
+Hi {{ order.full_name }},
+
+Thank you for your order! Your order number is {{ order.order_number }}.
+
+Order Details:
+Product: {{ order.lineitems.first.product.title }}
+Total Paid: {{ order.grand_total }}
+
+You can view your order history on our site.
+
+Thanks,
+Av Autohub Team
