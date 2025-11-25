@@ -83,7 +83,7 @@ def credit_application_view(request):
                 )
             
             messages.success(request, 'Your application has been submitted! We will contact you shortly.')
-            return redirect('home') # Redirect to home page after success
+            return redirect('profile') # Redirect to home page after success
         
         else:
             messages.error(request, 'Please correct the errors below and ensure you have uploaded documents for all categories.')

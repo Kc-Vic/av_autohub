@@ -188,7 +188,6 @@ def verify_payment(request):
 
         # Clean up the session
         del request.session['pending_order']
-        
 
         messages.success(request, f"Payment successful! Your order number is {order.order_number}.")
         return render(request, 'checkout/payment_success.html', {'order': order})
