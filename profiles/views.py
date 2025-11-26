@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from .models import UserProfile
 from .forms import userProfileForm
@@ -6,6 +6,7 @@ from .forms import userProfileForm
 from checkout.models import Order
 from credit.models import CreditApplication
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 # Create your views here.
 @login_required
@@ -58,3 +59,15 @@ def credit_history(request, application_id):
     }
     
     return render(request, template, context)
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        print("--- DEBUG: POST Request Received for Deletion ---")
+        user = request.user
+        logout(request)
+        user.delete()
+        messages.success(request, 'Your account has been deleted successfully.')
+        return redirect(reverse('products'))  # Redirect to home page or any other page after deletion
+    print("--- DEBUG: Received GET Request, redirecting ---")
+    return redirect(reverse('profile'))

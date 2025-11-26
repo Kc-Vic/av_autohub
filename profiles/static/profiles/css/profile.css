@@ -1,4 +1,6 @@
-.order-history {
+.order-history,
+.credit-applications
+{
     max-height: 416px; /* height of profile form + submit button */
     overflow-y: auto;
 }
