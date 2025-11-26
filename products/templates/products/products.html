@@ -2,6 +2,10 @@
 {% load static %}
 {% load humanize %}
 
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'product/css/product.css' %}">
+{% endblock %}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -37,10 +41,10 @@
                 <div class="row">
                     {% for product in products %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card h-100 border-0">
+                            <div class="card h-50 border-0">
                                 {% if product.image %}
                                 <a href="{% url 'product_detail' product.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.brand }}">
+                                    <img class="card-img-top card-img-fixed-height" src="{{ product.image.url }}" alt="{{ product.brand }}">
                                 </a>
                                 {% else %}
                                 <a href="{% url 'product_detail' product.id %}">
