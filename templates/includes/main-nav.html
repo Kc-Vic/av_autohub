@@ -13,11 +13,11 @@
                 Car Brands
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="{% url 'products' %}?brand=BMW&sort=year&direction=asc" class="dropdown-item">BMW</a>
-                <a href="{% url 'products' %}?brand=Honda&sort=year&direction=asc" class="dropdown-item ">Honda</a>
-                <a href="{% url 'products' %}?brand=Mercedes&sort=year&direction=asc" class="dropdown-item ">Mercedes</a>
-                <a href="{% url 'products' %}?brand=Toyota&sort=year&direction=asc" class="dropdown-item ">Toyota</a>
-                <a href="{% url 'products' %}?brand=BMW,Honda,Mercedes,Toyota" class="dropdown-item">All Brands</a>
+                <a href="{% url 'products' %}?brand=BMW&sort=price&direction=asc&category=Cars" class="dropdown-item">BMW</a>
+                <a href="{% url 'products' %}?brand=Honda&sort=price&direction=asc&category=Cars" class="dropdown-item ">Honda</a>
+                <a href="{% url 'products' %}?brand=Mercedes&sort=price&direction=asc&category=Cars" class="dropdown-item ">Mercedes</a>
+                <a href="{% url 'products' %}?brand=Toyota&sort=price&direction=asc&category=Cars" class="dropdown-item ">Toyota</a>
+                <a href="{% url 'products' %}?brand=BMW,Honda,Mercedes,Toyota&category=Cars&sort=price&direction=asc" class="dropdown-item">All Brands</a>
             </div>
         </li>
 
@@ -26,11 +26,11 @@
                 Car Accessories
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="accessories-link">
-                <a href="{% url 'products' %}?accessory_type=Internal&sort=price&direction=asc" class="dropdown-item">Interior Car Parts</a>
-                <a href="{% url 'products' %}?accessory_type=External&sort=price&direction=asc" class="dropdown-item">Exterior Car Parts</a>
-                <a href="{% url 'products' %}?accessory_type=Engine&sort=price&direction=asc" class="dropdown-item">Engine Parts</a>
-                <a href="{% url 'products' %}?accessory_type=Others&sort=price&direction=asc" class="dropdown-item">Others</a>
-                <a href="{% url 'products' %}?accessory_type=Internal,External,Engine,Others&sort=price&direction=asc" class="dropdown-item">All Accessories</a>
+                <a href="{% url 'products' %}?accessory_type=Internal&sort=price&direction=asc&category=Accessories" class="dropdown-item">Interior Car Parts</a>
+                <a href="{% url 'products' %}?accessory_type=External&sort=price&direction=asc&category=Accessories" class="dropdown-item">Exterior Car Parts</a>
+                <a href="{% url 'products' %}?accessory_type=Engine&sort=price&direction=asc&category=Accessories" class="dropdown-item">Engine Parts</a>
+                <a href="{% url 'products' %}?accessory_type=Others&sort=price&direction=asc&category=Accessories" class="dropdown-item">Others</a>
+                <a href="{% url 'products' %}?accessory_type=Internal,External,Engine,Others&sort=price&direction=asc&category=Accessories" class="dropdown-item">All Accessories</a>
             </div>
         </li>
 
@@ -39,9 +39,9 @@
                 Special Offers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="{% url 'products' %}?condition=New&sort=price&direction=asc" class="dropdown-item">New Arrivals</a>
-                <a href="{% url 'products' %}?Condition=Used&sort=price&direction=asc" class="dropdown-item">Used Car Deals</a>
-                <a href="{% url 'products' %}?credit_available=True&sort=price&direction=asc" class="dropdown-item">Credit Options</a>
+                <a href="{% url 'products' %}?condition=New&sort=price&direction=asc&category=Cars" class="dropdown-item">New Arrivals</a>
+                <a href="{% url 'products' %}?Condition=Used&sort=price&direction=asc&category=Cars" class="dropdown-item">Used Car Deals</a>
+                <a href="{% url 'products' %}?credit_available=True&sort=price&direction=asc&category=Cars" class="dropdown-item">Credit Options</a>
             </div>
         </li>
     </ul>
