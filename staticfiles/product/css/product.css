@@ -1,0 +1,13 @@
+.form-control {
+    margin-bottom: 1.5rem;
+}
+
+/* Custom CSS for product card images */
+.card-img-fixed-height {
+    /* Define a fixed height for consistency */
+    height: 200px; 
+    
+    /* Ensure the image covers the entire height without stretching */
+    object-fit: cover; 
+    
+}
