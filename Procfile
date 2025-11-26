@@ -1,0 +1,1 @@
+web: gunicorn av_autohub.wsgi:application

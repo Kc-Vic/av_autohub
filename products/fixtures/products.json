@@ -43,7 +43,7 @@
             "mileage": 4500,
             "condition": "Used",
             "credit_available": true,
-            "image": "",
+            "image": "products_images/BMWM4CompetitionCoupeexterior.jpg",
             "description": "Stunning, low-mileage M4 Competition. Finished in Brooklyn Grey with carbon fiber package. Still under factory warranty. A true driver's car.",
             "category": "Cars",
             "accessory_type": null
@@ -55,12 +55,12 @@
         "fields": {
             "brand": 1,
             "title": "BMW X5 40i xDrive",
-            "price": "6200000000",
+            "price": "6200000",
             "year": 2022,
             "mileage": 18000,
             "condition": "Used",
             "credit_available": true,
-            "image": "",
+            "image": "/products_images/BMWX540ixDrive2022model.jpg",
             "description": "Executive package SUV, meticulously maintained. Equipped with panoramic sunroof, head-up display, and premium sound system. Perfect family vehicle.",
             "category": "Cars",
             "accessory_type": null
@@ -94,7 +94,7 @@
             "mileage": 45000,
             "condition": "Used",
             "credit_available": true,
-            "image": "",
+            "image": "products_images/Mercedes-BenzC300Sedan2019.jpg",
             "description": "Elegant C-Class with AMG styling package. Features heated seats, navigation, and blind-spot assist. Recently serviced and ready for the road.",
             "category": "Cars",
             "accessory_type": null
@@ -111,7 +111,7 @@
             "mileage": 0,
             "condition": "New",
             "credit_available": false,
-            "image": "",
+            "image": "products_images/Mercedes-BenzG63AMG2024model.jpg",
             "description": "Brand new, zero-mileage G-Wagon. Handcrafted V8 engine, exclusive leather interior, and all available driver assistance systems. Immediate availability.",
             "category": "Cars",
             "accessory_type": null
@@ -140,12 +140,12 @@
         "fields": {
             "brand": 3,
             "title": "Toyota RAV4 XLE",
-            "price": "298000000",
+            "price": "29800000",
             "year": 2021,
             "mileage": 25000,
             "condition": "Used",
             "credit_available": true,
-            "image": "",
+            "image": "products_images/ToyotaRAV4XLE2021model.jpg",
             "description": "Reliable and efficient SUV. All-wheel drive, excellent fuel economy, and Toyota Safety Sense 2.0. Perfect condition, single owner.",
             "category": "Cars",
             "accessory_type": null
@@ -157,12 +157,12 @@
         "fields": {
             "brand": 3,
             "title": "Toyota Corolla LE",
-            "price": "16500",
+            "price": "1650000",
             "year": 2018,
-            "mileage": 78000000,
+            "mileage": 7800,
             "condition": "Used",
             "credit_available": true,
-            "image": "",
+            "image": "products_images/Toyota Corolla LE 2018 mode.jpg",
             "description": "Highly dependable commuter car. Well-maintained service records. A practical and affordable vehicle known for its longevity.",
             "category": "Cars",
             "accessory_type": null
@@ -174,12 +174,12 @@
         "fields": {
             "brand": 3,
             "title": "Toyota Land Cruiser 300 Series",
-            "price": "980000000",
+            "price": "9800000",
             "year": 2024,
             "mileage": 100,
             "condition": "New",
             "credit_available": true,
-            "image": "",
+            "image": "products_images/Toyota Land Cruiser 300 Series 2024.jpg",
             "description": "The legendary off-roader, completely redesigned. Full luxury and capability package. Very limited stock available.",
             "category": "Cars",
             "accessory_type": null
@@ -208,30 +208,13 @@
         "fields": {
             "brand": 4,
             "title": "Honda Civic EX Sedan",
-            "price": "22900",
+            "price": "2290000",
             "year": 2020,
-            "mileage": 3050000000,
+            "mileage": 30500,
             "condition": "Used",
             "credit_available": true,
-            "image": "",
+            "image": "products_images/Honda Civic EX Sedan 2020.jpg",
             "description": "Clean, reliable Civic with the fuel-efficient 1.5L turbo engine. Includes Honda Sensing safety features and a spacious cabin.",
-            "category": "Cars",
-            "accessory_type": null
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 12,
-        "fields": {
-            "brand": 4,
-            "title": "Honda CR-V AWD Touring",
-            "price": "360000000000",
-            "year": 2023,
-            "mileage": 9800,
-            "condition": "Used",
-            "credit_available": true,
-            "image": "",
-            "description": "Top-tier CR-V trim with leather, navigation, and all-wheel drive. Practically new and priced to sell quickly.",
             "category": "Cars",
             "accessory_type": null
         }
@@ -242,7 +225,7 @@
         "fields": {
             "brand": 4,
             "title": "Honda Accord Hybrid Sport",
-            "price": "31500000000",
+            "price": "31500",
             "year": 2022,
             "mileage": 15000,
             "condition": "Used",
@@ -276,12 +259,12 @@
         "fields": {
             "brand": 1,
             "title": "BMW iX xDrive50",
-            "price": "9500000000000",
+            "price": "95000000",
             "year": 2024,
             "mileage": 0,
             "condition": "New",
             "credit_available": true,
-            "image": "",
+            "image": "products_images/BMW iX xDrive50 2024 model.jpg",
             "description": "Brand new electric SUV with massive range and luxurious interior. Cutting-edge technology and immediate torque. Fully electric.",
             "category": "Cars",
             "accessory_type": null
@@ -293,12 +276,12 @@
         "fields": {
             "brand": 2,
             "title": "Mercedes-Benz EQS 580 Sedan",
-            "price": "11500000000",
+            "price": "1150000",
             "year": 2023,
             "mileage": 7000,
             "condition": "Used",
             "credit_available": true,
-            "image": "",
+            "image": "products_images/Mercedes-Benz EQS 580 Sedan 2023.jpg",
             "description": "Flagship electric luxury sedan. Features the impressive Hyperscreen dashboard and exceptional ride comfort. Low miles.",
             "category": "Cars",
             "accessory_type": null
@@ -327,12 +310,12 @@
         "fields": {
             "brand": 3,
             "title": "Toyota Camry SE",
-            "price": "27000000000",
+            "price": "2700000",
             "year": 2023,
             "mileage": 12000,
             "condition": "Used",
             "credit_available": true,
-            "image": "",
+            "image": "products_images/oyota Camry SE 2023 model.jpg",
             "description": "Sporty and reliable sedan. Recent model year with minimal wear. Excellent choice for daily commuting and long trips.",
             "category": "Cars",
             "accessory_type": null
@@ -361,12 +344,12 @@
         "fields": {
             "brand": 4,
             "title": "Honda Pilot Elite",
-            "price": "4100000000",
+            "price": "4100000",
             "year": 2021,
             "mileage": 35000,
             "condition": "Used",
             "credit_available": true,
-            "image": "",
+            "image": "products_images/Honda Pilot Elite 2021 model.jpg",
             "description": "Three-row SUV perfect for a large family. Features heated/ventilated seats, rear entertainment system, and all-wheel drive.",
             "category": "Cars",
             "accessory_type": null
