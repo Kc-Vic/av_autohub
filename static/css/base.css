@@ -134,7 +134,9 @@ input[name='q']::placeholder {
     height: 2px;
 }
 
-
+#teamCarousel {
+    position: relative;
+}
 
 /* -------------------------------- Media Queries */
 

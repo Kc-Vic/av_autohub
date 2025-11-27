@@ -60,7 +60,7 @@
             "mileage": 18000,
             "condition": "Used",
             "credit_available": true,
-            "image": "/products_images/BMWX540ixDrive2022model.jpg",
+            "image": "products_images/BMWX540ixDrive2022model.jpg",
             "description": "Executive package SUV, meticulously maintained. Equipped with panoramic sunroof, head-up display, and premium sound system. Perfect family vehicle.",
             "category": "Cars",
             "accessory_type": null
@@ -225,12 +225,12 @@
         "fields": {
             "brand": 4,
             "title": "Honda Accord Hybrid Sport",
-            "price": "31500",
+            "price": "3150000",
             "year": 2022,
             "mileage": 15000,
             "condition": "Used",
             "credit_available": true,
-            "image": "",
+            "image": "products_images/Honda Accord Hybrid Sport.jpg",
             "description": "Fuel-sipping hybrid sedan offering a blend of performance and incredible gas mileage. Sport styling package included.",
             "category": "Cars",
             "accessory_type": null
@@ -247,7 +247,7 @@
             "mileage": null,
             "condition": "New",
             "credit_available": false,
-            "image": "",
+            "image": "products_images/Honda-Jazz-spark-plugs.jpg",
             "description": "Set of four OEM iridium spark plugs, factory specification for most 4-cylinder Honda engines (2015+).",
             "category": "Accessories",
             "accessory_type": "Engine"
@@ -298,7 +298,7 @@
             "mileage": null,
             "condition": "New",
             "credit_available": false,
-            "image": "",
+            "image": "products_images/AMG Aero Wheel Set (19-inch).jpg",
             "description": "Full set of four 19-inch AMG style alloy wheels. Improves aesthetics and handling. Fits most C-Class and E-Class models.",
             "category": "Accessories",
             "accessory_type": "External"
@@ -326,13 +326,13 @@
         "pk": 18,
         "fields": {
             "brand": 3,
-            "title": "Toyota Microfiber Interior Cleaning Kit",
+            "title": "Microfiber Interior Cleaning Kit",
             "price": "6500",
             "year": null,
             "mileage": null,
             "condition": "New",
             "credit_available": false,
-            "image": "",
+            "image": "products_images/Microfiber Interior Cleaning Kit.jpg",
             "description": "Official Toyota interior cleaning kit, including microfiber cloths, dashboard cleaner, and leather conditioner.",
             "category": "Accessories",
             "accessory_type": "Internal"
