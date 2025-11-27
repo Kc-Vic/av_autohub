@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
     'avautohub-3ceed5c741e2.herokuapp.com',
@@ -155,7 +155,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if 'USE_AWS' in os.environ:
     # --- AWS CONFIGURATION ---
-    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+    AWS_STORAGE_BUCKET_NAME = 'avautohub'
     AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME') or 'us-east-1' # Default to us-east-1 if not set
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
