@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>Review Credit Application</h1>
+            <p class="lead">Application ID: <strong>{{ application.application_id }}</strong></p>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Applicant Details</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Status:</strong> {{ application.get_status_display }}</p>
+                    <p><strong>Applicant Name:</strong> {{ application.full_name }}</p>
+                    <p><strong>Address:</strong> {{ application.address }}</p>
+                    <p><strong>Job/Title:</strong> {{ application.job_business_title }}</p>
+                    <p><strong>Annual Income:</strong> {{ application.annual_income }}</p>
+                    <p><strong>Requested Loan Amount:</strong> {{ application.loan_amount }}</p>
+                    {% if application.product %}
+                        <p><strong>Product Applied For:</strong> {{ application.product.title }} ({{ application.product.price }})</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="card shadow mt-4">
+                <div class="card-header bg-secondary text-white">
+                    <h4 class="mb-0">Supporting Documents</h4>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for doc in documents %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ doc.get_document_type_display }}
+                            <a href="{{ doc.document.url }}" target="_blank" class="btn btn-sm btn-info">View Document</a>
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">No documents uploaded.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% if application.status == 'Pending' %}
+            <div class="mt-4 p-3 border rounded text-center bg-light">
+                <p class="font-weight-bold">Reviewer Actions:</p>
+                <form method="POST" action="{% url 'review_credit' application_id=application.application_id %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" name="action" value="approve" class="btn btn-success btn-lg mx-2">Approve Application</button>
+                </form>
+                
+                <form method="POST" action="{% url 'review_credit' application_id=application.application_id %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" name="action" value="reject" class="btn btn-danger btn-lg mx-2">Reject Application</button>
+                </form>
+            </div>
+            {% else %}
+            <div class="alert alert-info text-center mt-4">
+                Application is already <strong>{{ application.get_status_display }}</strong>. No further action needed.
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

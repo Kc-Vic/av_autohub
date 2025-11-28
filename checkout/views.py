@@ -139,7 +139,7 @@ def verify_payment(request):
         save_info = pending_order_data.get('save_info', False) 
         product = get_object_or_404(Product, pk=product_id)
         paystack_amount_kobo = response['data']['amount']
-        verified_total = Decimal(paystack_amount_kobo) / Decimal(100).quantize(Decimal('1'), rounding=ROUND_HALF_UP)
+        verified_total = Decimal(paystack_amount_kobo) / Decimal(100).quantize(Decimal('2'), rounding=ROUND_HALF_UP)
 
         # Create the Order in the database
         order = Order(

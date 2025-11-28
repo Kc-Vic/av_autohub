@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required  # <-- ADD THIS LINE
 from .models import CreditApplication, SupportingDocument
 from .forms import CreditApplicationForm
+from django.urls import reverse
 
 # Create your views here.
 
@@ -42,9 +43,11 @@ def credit_options_view(request, product_id):
     return render(request, 'credit/credit_options.html', context)
 
 # view for credit application form
-@login_required # Make sure the user is logged in to apply
+@login_required 
 def credit_application_view(request):
     """ A view to handle the credit application submission """
+    product = get_object_or_404(Product, pk=product_id)
+    loan_amount = product.price * Decimal('0.50')
     
     if request.method == 'POST':
         form = CreditApplicationForm(request.POST)
@@ -60,6 +63,8 @@ def credit_application_view(request):
             # 1. Save the main application form
             application = form.save(commit=False)
             application.user = request.user # Link to the logged-in user
+            application.product = Product
+            application.loan_amount = loan_amount
             application.save() # Save application to get its ID
 
             # 2. Create SupportingDocument objects for each uploaded file
@@ -104,11 +109,13 @@ def credit_application_detail_view(request, application_id):
     """
     
     # Securely retrieve the application, ensuring it belongs to the logged-in user
+
     application = get_object_or_404(
         CreditApplication, 
         application_id=application_id,
-        user=request.user
+        user=request.user,
     )
+    
     
     # Determine the template based on the status
     if application.status == 'Approved':
@@ -123,3 +130,66 @@ def credit_application_detail_view(request, application_id):
     }
     
     return render(request, template_name, context)
+
+# @login_required
+# def review_credit(request, application_id):
+#     """ Edit a product in the store """
+#     if not request.user.is_superuser:
+#         messages.error(request, 'Sorry, only store owners can do that.')
+#         return redirect(reverse('home'))
+#     application = get_object_or_404(
+#         CreditApplication.objects.select_related('product'), 
+#         application_id=application_id
+#     )
+#     if request.method == 'POST':
+#         action = request.POST.get('action')
+        
+#         if action == 'approve':
+#                     new_status = 'Approved'
+#                     messages.success(request, f'Application {application.application_id} has been Approved!')
+#         elif action == 'reject':
+#             new_status = 'Rejected'
+#             messages.success(request, f'Application {application.application_id} has been Rejected.')
+#         else:
+#             # Handle unexpected POST request if no action is provided
+#             messages.error(request, 'Invalid action submitted.')
+#             return redirect(reverse('credit_application_detail', args=[application.application_id]))
+    
+#         application.status = new_status
+#         application.save()
+        
+#         return redirect(reverse('credit_application_detail', args=[application.application_id]))
+#     else:
+#         template = 'credit/review_credit.html'
+#         context = {
+#             'application': application,
+#             'documents': application.documents.all(), 
+#         }
+        
+#     return render(request, template, context)
+
+# credit/views.py
+
+
+# @login_required
+# def application_list_view(request):
+#     """ Allows superuser to view a list of all credit applications for review. """
+    
+#     # Permission Check: Ensure only superusers can access this list
+#     if not request.user.is_superuser:
+#         messages.error(request, 'Sorry, only store owners can access the application list.')
+#         return redirect(reverse('home')) 
+        
+#     # Retrieve all applications. You might want to filter only 'Pending' ones
+#     # and sort them by creation date for efficient review.
+#     applications = CreditApplication.objects.select_related('user', 'product').order_by('-created_at')
+
+#     # You can apply filtering here, e.g., only show pending applications:
+#     # applications = applications.filter(status='Pending')
+        
+#     context = {
+#         'applications': applications
+#     }
+    
+#     # Template to display the list (must be created)
+#     return render(request, 'credit/application_list.html', context)

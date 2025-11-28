@@ -62,7 +62,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'av_autohub.urls'
 
 # FIX 2: Switched to Bootstrap 5 template pack for compatibility
-CRISPY_TEMPLATE_PACK = 'bootstrap5' 
+CRISPY_TEMPLATE_PACK = 'bootstrap4' 
 
 TEMPLATES = [
     {
@@ -96,7 +96,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+
+
 DEFAULT_FROM_EMAIL = 'noreply@yourdomain.com'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
@@ -154,14 +155,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if 'USE_AWS' in os.environ:
-    # --- AWS CONFIGURATION ---
-    if 'USE_AWS' in os.environ:
+    
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
         'CacheControl': 'max-age=94608000',
     }
-    
+    # --- AWS CONFIGURATION ---
     AWS_STORAGE_BUCKET_NAME = 'avautohub'
     AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME') or 'us-east-1' # Default to us-east-1 if not set
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
@@ -183,6 +183,18 @@ else:
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+    DEFAULT_FROM_EMAIL = 'avautohub@example.com'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 # PAYSTACK SETTINGS
 PAYSTACK_PUBLIC_KEY = os.environ.get('PAYSTACK_PUBLIC_KEY')

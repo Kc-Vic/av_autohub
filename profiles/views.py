@@ -53,7 +53,6 @@ def credit_history(request, application_id):
     context = {
         'form': form,
         'orders': orders,
-        # Passing both history QuerySets to the template
         'credit_applications': credit_applications,
         'on_profile_page': True 
     }

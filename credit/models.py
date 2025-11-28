@@ -3,6 +3,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import User
 from decimal import Decimal
+from products.models import Product
 
 # Model 1: The main application
 class CreditApplication(models.Model):
@@ -12,8 +13,17 @@ class CreditApplication(models.Model):
         ('Rejected', 'Rejected'),
     ]
 
+    
     # Link to the user who is applying
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="credit_applications")
+    
+    product = models.ForeignKey(
+        Product, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True, 
+        related_name="credit_applications"
+    )
     
     # Form fields
     full_name = models.CharField(max_length=255)
@@ -21,9 +31,10 @@ class CreditApplication(models.Model):
     job_business_title = models.CharField(max_length=255)
     employer_business_address = models.TextField()
     annual_income = models.DecimalField(max_digits=15, decimal_places=0) # Use 0 for whole Naira
+    loan_amount = models.DecimalField(max_digits=20, decimal_places=0, default=0)
 
     # Admin/Tracking fields
-    application_id = models.CharField(max_length=20, unique=True, editable=False)
+    application_id = models.CharField(max_length=35, unique=True, editable=False)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Pending')
     created_at = models.DateTimeField(auto_now_add=True)
     
