@@ -4,10 +4,23 @@
 
 /* Custom CSS for product card images */
 .card-img-fixed-height {
-    /* Define a fixed height for consistency */
     height: 200px; 
+    object-fit: cover;  
+}
+
+@media (max-width: 767.98px) {
     
-    /* Ensure the image covers the entire height without stretching */
-    object-fit: cover; 
-    
+    /* 1. Adjust the width of the sort dropdown wrapper */
+    .sort-select-wrapper {
+        width: 80% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 2. Adjust the product count text (p class) for compactness */
+    .product-container .text-muted.mt-3 {
+        font-size: 0.85rem; 
+        margin-top: 0.5rem !important; 
+        text-align: center !important; 
+    }
 }

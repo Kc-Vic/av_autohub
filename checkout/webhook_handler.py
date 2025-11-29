@@ -49,9 +49,7 @@ class PaystackWH_Handler:
 
         
     def handle_payment_intent_succeeded(self, event):
-        """
-        Handle the payment_intent.succeeded webhook from Stripe
-        """
+
         intent = event.data.object
         pid = intent.id
         bag = intent.metadata.bag
@@ -95,7 +93,7 @@ class PaystackWH_Handler:
                     county__iexact=shipping_details.address.state,
                     grand_total=grand_total,
                     original_bag=bag,
-                    stripe_pid=pid,
+                    paypal_pid=pid,
                 )
                 order_exists = True
                 break
@@ -123,7 +121,7 @@ class PaystackWH_Handler:
                     county=shipping_details.address.state,
                     grand_total=grand_total,
                     original_bag=bag,
-                    stripe_pid=pid,
+                    paypal_pid=pid,
                 )
                 for item_id, item_data in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)
@@ -155,9 +153,6 @@ class PaystackWH_Handler:
             status=200)
 
     def handle_payment_intent_payment_failed(self, event):
-        """
-        Handle the payment_intent.payment_failed webhook from Stripe
-        """
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)
