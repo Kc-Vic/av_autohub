@@ -4,7 +4,6 @@ from .models import UserProfile
 from .forms import userProfileForm
 
 from checkout.models import Order
-from credit.models import CreditApplication
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
@@ -25,7 +24,9 @@ def profile(request):
     context = {
         'form': form,
         'orders': orders,
-        'credit_applications': request.user.credit_applications.all().order_by('-created_at'),
+        'credit_applications': request.user.credit_applications.all().order_by(
+            '-created_at'
+        ),
         'on_profile_page': True,
     }
     return render(request, 'profiles/profile.html', context)
@@ -48,16 +49,17 @@ def order_history(request, order_number):
 
 @login_required
 def credit_history(request, application_id):
-    credit_applications = request.user.credit_applications.all().order_by('-created_at')
+    credit_applications = request.user.credit_applications.all().order_by(
+        '-created_at'
+    )
     template = 'profiles/profile.html'
     context = {
-        'form': form,
-        'orders': orders,
         'credit_applications': credit_applications,
-        'on_profile_page': True 
+        'on_profile_page': True
     }
-    
+
     return render(request, template, context)
+
 
 @login_required
 def delete_account(request):
@@ -66,7 +68,9 @@ def delete_account(request):
         user = request.user
         logout(request)
         user.delete()
-        messages.success(request, 'Your account has been deleted successfully.')
-        return redirect(reverse('products'))  # Redirect to home page or any other page after deletion
+        messages.success(
+            request, 'Your account has been deleted successfully.'
+        )
+        return redirect(reverse('products')) 
     print("--- DEBUG: Received GET Request, redirecting ---")
     return redirect(reverse('profile'))

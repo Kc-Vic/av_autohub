@@ -33,9 +33,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', 
-    'django.contrib.sites', 
-    'django.contrib.humanize', 
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.humanize',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -45,12 +45,12 @@ INSTALLED_APPS = [
     'credit',
     'checkout',
     'profiles',
-    'storages', # Required for S3/Media storage
+    'storages',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', 
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -63,14 +63,14 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'av_autohub.urls'
 
 # FIX 2: Switched to Bootstrap 5 template pack for compatibility
-CRISPY_TEMPLATE_PACK = 'bootstrap4' 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'), 
-            os.path.join(BASE_DIR, 'templates', 'allauth'), 
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -102,13 +102,17 @@ SITE_ID = 1
 # DEFAULT_FROM_EMAIL = 'noreply@yourdomain.com'
 # SERVER_EMAIL = DEFAULT_FROM_EMAIL
 ACCOUNT_LOGIN_METHODS = {'username', 'email'}
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'email2*', 'username*', 'password1*', 'password2*']
+ACCOUNT_SIGNUP_FIELDS = [
+    'email*', 'email2*', 'username*', 'password1*', 'password2*'
+]
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'email2*', 'username*', 'password1*', 'password2*']
+ACCOUNT_SIGNUP_FIELDS = [
+    'email*', 'email2*', 'username*', 'password1*', 'password2*'
+]
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 ACCOUNT_PASSWORD_MIN_LENGTH = 8
-LOGIN_URL = '/accounts/login/' 
-LOGIN_REDIRECT_URL = '/' 
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'av_autohub.wsgi.application'
 
@@ -164,7 +168,7 @@ if 'USE_AWS' in os.environ:
     }
     # --- AWS CONFIGURATION ---
     AWS_STORAGE_BUCKET_NAME = 'avautohub'
-    AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME') or 'us-east-1' # Default to us-east-1 if not set
+    AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME') or 'us-east-1'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'

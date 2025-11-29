@@ -11,22 +11,6 @@ from decimal import ROUND_HALF_UP
 from profiles.models import UserProfile
 from profiles.forms import userProfileForm
 
-"""
-The `checkout_view` function handles the checkout process for a product, including form validation,
-preparing data for payment processing with Paystack, and redirecting to Paystack for payment
-authorization.
-
-:param request: The `request` parameter in Django represents the HTTP request that was sent to the
-view. It contains information about the request, such as the user making the request, any data sent
-with the request (POST data), the method used (GET, POST, etc.), and more. The view uses this
-:param product_id: The `product_id` parameter in the `checkout_view` function is used to identify
-the specific product that the user is trying to purchase. It is retrieved from the URL and then used
-to fetch the corresponding product object from the database using Django's `get_object_or_404`
-function. This ensures
-:return: The `checkout_view` function returns a rendered template 'checkout/checkout.html' with the
-context data containing the order form, product details, order total, grand total, and Paystack
-public key.
-"""
 
 
 def checkout_view(request, product_id):
@@ -81,7 +65,10 @@ def checkout_view(request, product_id):
                 return redirect(auth_url)
             else:
                 # API call failed
-                messages.error(request, 'Could not connect to payment service. Please try again.')
+                messages.error(
+                    request, 
+                    'Could not connect to payment service. Please try again.'
+                )
                 order_form = form
         else:
             # Form is invalid
@@ -93,9 +80,9 @@ def checkout_view(request, product_id):
         
     context = {
         'order_form': order_form,
-        'product': product,         # Pass the product to the template
-        'order_total': order_total,   # Pass the total to the template
-        'grand_total': grand_total, # Pass the total to the template
+        'product': product,
+        'order_total': order_total,
+        'grand_total': grand_total,
         'paystack_public_key': settings.PAYSTACK_PUBLIC_KEY,
     }
     

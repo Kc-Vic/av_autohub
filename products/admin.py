@@ -14,5 +14,6 @@ class BrandAdmin(admin.ModelAdmin):
     list_display = ('brand',)
     search_fields = ('brand',)
 
+
 admin.site.register(brand, BrandAdmin)
 admin.site.register(Product, ProductAdmin)

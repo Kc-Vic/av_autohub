@@ -2,7 +2,6 @@ import uuid
 
 from django.db import models
 from django.contrib.auth.models import User
-from decimal import Decimal
 from products.models import Product
 
 # Model 1: The main application
@@ -30,8 +29,12 @@ class CreditApplication(models.Model):
     address = models.TextField()
     job_business_title = models.CharField(max_length=255)
     employer_business_address = models.TextField()
-    annual_income = models.DecimalField(max_digits=15, decimal_places=0) # Use 0 for whole Naira
-    loan_amount = models.DecimalField(max_digits=20, decimal_places=0, default=0)
+    annual_income = models.DecimalField(
+        max_digits=15, decimal_places=0
+    ) # Use 0 for whole Naira
+    loan_amount = models.DecimalField(
+        max_digits=20, decimal_places=0, default=0
+    )
 
     # Admin/Tracking fields
     application_id = models.CharField(max_length=35, unique=True, editable=False)

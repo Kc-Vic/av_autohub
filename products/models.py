@@ -27,7 +27,10 @@ class Product(models.Model):
         ('Used', 'Used'),
     ]
     
-    brand = models.ForeignKey(brand, null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
+    brand = models.ForeignKey(
+        brand, null=True, blank=True,
+        on_delete=models.SET_NULL, related_name='products'
+    )
     title = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=20, decimal_places=0)
     year = models.PositiveIntegerField(blank=True, null=True)

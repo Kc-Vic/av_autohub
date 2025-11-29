@@ -12,6 +12,7 @@ class teamAdmin(admin.ModelAdmin):
     list_display = ('name', 'position')
     search_fields = ('name', 'position')
     bios = ('bio',)
-    
+
+
 admin.site.register(aboutUs, aboutUsAdmin)
 admin.site.register(team, teamAdmin)

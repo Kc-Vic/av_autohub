@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, brand
+from .models import Product
 
 class ProductForm(forms.ModelForm):
     class Meta:
@@ -32,7 +32,5 @@ class ProductForm(forms.ModelForm):
 
         self.fields['brand'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            placeholder = placeholders[field]
             self.fields[field].widget.attrs['class'] = 'form-control rounded-0'
-            #self.fields[field].widget.attrs['placeholder'] = placeholder
-            #self.fields[field].label = False
+
