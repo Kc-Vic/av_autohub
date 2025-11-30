@@ -10,7 +10,7 @@ class CreditApplicationForm(forms.ModelForm):
             'address', 
             'job_business_title', 
             'employer_business_address', 
-            'annual_income'
+            'annual_income',
         )
 
     def __init__(self, *args, **kwargs):

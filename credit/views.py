@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from products.models import Product  # Import your Product model
+from products.models import Product
 from decimal import Decimal
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required  # <-- ADD THIS LINE
+from django.contrib.auth.decorators import login_required
 from .models import CreditApplication, SupportingDocument
 from .forms import CreditApplicationForm
 from django.urls import reverse
@@ -46,9 +46,7 @@ def credit_options_view(request, product_id):
 @login_required 
 def credit_application_view(request):
     """ A view to handle the credit application submission """
-    product = get_object_or_404(Product, pk=product_id)
-    loan_amount = product.price * Decimal('0.50')
-    
+
     if request.method == 'POST':
         form = CreditApplicationForm(request.POST)
 
@@ -62,12 +60,10 @@ def credit_application_view(request):
             
             # 1. Save the main application form
             application = form.save(commit=False)
-            application.user = request.user # Link to the logged-in user
+            application.user = request.user
             application.product = Product
-            application.loan_amount = loan_amount
-            application.save() # Save application to get its ID
+            application.save()
 
-            # 2. Create SupportingDocument objects for each uploaded file
             for f in id_files:
                 SupportingDocument.objects.create(
                     application=application,
