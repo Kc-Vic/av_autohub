@@ -60,7 +60,7 @@
                     <p class="lead">Ready to proceed?</p>
                     <!-- Link to the main application form -->
                     {%if user.is_authenticated %}
-                    <a href="{% url 'credit_application' %}" class="btn btn-black btn-lg rounded-0 text-uppercase">
+                    <a href="{% url 'credit_application' product.id %}" class="btn btn-black btn-lg rounded-0 text-uppercase">
                         Start Full Application
                     </a>
                     {% else %}
